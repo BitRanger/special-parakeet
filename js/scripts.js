@@ -1,9 +1,9 @@
-async function demo(){
-  await sleep(5000);
-  alert(INFINITE LOOP)
+/* Hello World */
 
-}
-while(true) {
-  demo()
+console.log("Hello, world!");
 
+/* This is an infinite loop. It gives you 1 alert per ms.*/
+
+function hello() {
+  setInterval(function(){ alert("Hello"); }, 1);
 }
