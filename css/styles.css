@@ -1,53 +1,42 @@
-:root {
-  --blue: hsla(0,64%,67%,1);
-  --pink: hsl(342, 65%, 67%);
-
-}
 html {
   scroll-behavior: smooth;
-
-
 }
+
 head {
-  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Roboto+Mono&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Raleway&family=Roboto&family=Roboto+Mono&family=Source+Sans+Pro&display=swap");
 }
 
-body {
-
-}
-
-.titlestuff {
-	text-align: center;
-  color: var(--pink);
-  font-family: 'Raleway', sans-serif;
-}
-
- .textstuff {
-  font-family: 'Roboto Mono', monospace;
-  text-decoration: none;
-  }
 .myNav {
   display: block;
   height: 3em;
-  background-color: #333;
-  width: 1em%;
-  padding-left: 0px;
+  background: #1d906e;
+  width: 100%;
+  z-index: 100;
 }
 .myNav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 .myNav li {
   float: left;
 }
 .myNav li a {
-    display: inline-block;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    color: var(--blue);
+  display: inline-block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: #d1d1d1;
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  border: solid;
+  padding-bottom: 0px;
+  margin-right: 1em;
+  margin-left: 1em;
+  border-radius: 0.25em;
 }
-.myNav li a.active {
-    background-color: #3786E1;
+.myNav li a:hover {
+  color: green;
+}
