@@ -1,38 +1,72 @@
 <!DOCTYPE html>
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
+<html style="scroll-behavior:smooth;" lang="en">
 
-    <title>IDK</title>
-    <meta name="description" content="IDK WHAT THIS IS">
-    <meta name="author" content="Nitro01010">
+<head>
+  <meta charset="utf-8" />
 
-    <link rel="stylesheet" href="css/styles.css">
-		
-		<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-		<link rel="manifest" href="site.webmanifest">
-		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+  <title>IDK</title>
+  <meta name="description" content="IDK WHAT THIS IS" />
+  <meta name="author" content="Nitro01010" />
 
-  </head>
+  <link rel="stylesheet" href="css/styles.css" />
 
-  <body>
-    <nav class="myNav">
-      <ul>
-        <li>
-          <a href="#titlestuff">TitleStuff</a>
-        </li>
-        <li>
-          <a href="#textstuff">TextStuff</a>
-        </li>
-      </ul>
-    </nav>
-    <h2 class="titlestuff" id="titlestuff">Cool Gradient</h2>
-    <p class="textstuff" id="textstuff">stuff</p>
-    <button onclick="hello()">hello</button>
-    <script>alert(hello)</script>
-  </body>
-  <script src="js/scripts.js"></script>
-</html>  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.glitch.com/72ea31d7-3a0a-4fe3-8d00-5fbb587e9b0d%2Fapple-touch-icon.png?v=1621741512116" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.glitch.com/72ea31d7-3a0a-4fe3-8d00-5fbb587e9b0d%2Ffavicon-32x32.png?v=1621741804831" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.glitch.com/72ea31d7-3a0a-4fe3-8d00-5fbb587e9b0d%2Ffavicon-16x16.png?v=1621741512116" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.glitch.com/72ea31d7-3a0a-4fe3-8d00-5fbb587e9b0d%2Ffavicon.ico?v=1621741512250" />
+</head>
+
+<body>
+  <nav class="myNav">
+    <ul>
+      <li>
+        <a href="#titlestuff">TitleStuff</a>
+      </li>
+      <li>
+        <a href="#textstuff">TextStuff</a>
+      </li>
+      <li>
+        <a href="#form">DATA</a>
+      </li>
+    </ul>
+  </nav>
+  <h2 class="titlestuff" id="titlestuff">
+    Cool Button<br />(I am definitely not useless)
+  </h2>
+  <p class="textstuff" id="textstuff">
+    I made a thing that gives me data. Its sort of cool. Click the Data button
+    to go to it.<br />
+  <p class="small-text">
+    (Also, click the button bellow and press and hold the escape key)
+  </p>
+  </p>
+  <button id="seizure-button" onclick="hello()">BUTTON</button>
+  <script>
+    // alert("hello")
+  </script>
+  <form id="form" action="/my-handling-form-page" method="post">
+    GIVE ME DATA
+    <ul>
+      <li>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="user_name" />
+      </li>
+      <li>
+        <label for="mail">E-mail:</label>
+        <input type="email" id="mail" name="user_email" />
+      </li>
+      <li>
+        <label for="msg">Message:</label>
+        <textarea id="msg" name="user_message"></textarea>
+      </li>
+      <li class="button">
+        <button type="submit">GIVE ME YOUR DATA</button>
+      </li>
+    </ul>
+  </form>
+</body>
+<script src="js/scripts.js"></script>
+
+</html>

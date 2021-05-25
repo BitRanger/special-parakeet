@@ -2,12 +2,13 @@ head {
   @import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Raleway&family=Roboto&family=Roboto+Mono&family=Source+Sans+Pro&display=swap");
 }
 body {
-	margin-left: 0%;
-	margin-right: 0%;
-	margin-top: 0%;
-	padding-left: 0%;
-	padding-right: 0%;
-	padding-top: 0%;
+  margin-left: 0%;
+  margin-right: 0%;
+  margin-top: 0%;
+  padding-left: 0%;
+  padding-right: 0%;
+  padding-top: 0%;
+  text-align: center;
 }
 
 .myNav {
@@ -16,6 +17,7 @@ body {
   background: #1d906e;
   width: 100%;
   z-index: 100;
+  box-shadow: 0 0 20px 0 hsla(0, 0%, 0%, 0.5);
 }
 .myNav ul {
   list-style: none;
@@ -27,15 +29,16 @@ body {
 }
 .myNav li a {
   display: inline-block;
+/*   Font/Color Stuff  */
   text-align: center;
-  padding: 14px 16px;
   text-decoration: none;
   color: #d1d1d1;
   font-family: "Open Sans", sans-serif;
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 24px;
+  font-weight: 900;
   letter-spacing: 0.04em;
-  border: solid;
+/*   Padding/Margin-Stuff */
+  padding-top: 0.5em;
   padding-bottom: 0px;
   margin-right: 1em;
   margin-left: 1em;
@@ -46,31 +49,97 @@ body {
 }
 .titlestuff {
   display: inline-block;
-  margin-left: 3em;
-  background-color: #F3F3F3;
-  border-radius:1em;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  padding-left: 1em;
-  padding-right: 1em;
-  margin-right: 1em;
-  transition: all 0.7s ease-in-out;
-  box-shadow: 0 1px 1px hsla(0, 0%, 97%, 0.11), 
-              0 2px 2px hsla(0, 0%, 97%, 0.11), 
-              0 4px 4px hsla(0, 0%, 97%, 0.11), 
-              0 8px 8px hsla(0, 0%, 97%, 0.11), 
-              0 16px 16px hsla(0, 0%, 97%, 0.11), 
-              0 32px 32px hsla(0, 0%, 97%, 0.11);
+  background-color: gray;
+  margin-top: 3em;
+  border-radius: 1em;
+  padding: 1em;
+  box-shadow: 0px 5px 25px 0px hsla(0, 0%, 0%, 0.3);
+  transition: transform 700ms, box-shadow 700ms;
 
-  
 }
 .titlestuff:hover {
-  
-  background-color: #E9E0E0;
-  box-shadow: 0 1px 1px hsla(0, 0%, 97%, 0.11),
-              0 2px 2px hsla(0, 0%, 97%, 0.12), 
-              0 4px 4px hsla(0, 0%, 97%, 0.13),
-              0 8px 8px hsla(0, 0%, 97%, 0.14), 
-              0 16px 16px hsla(0, 0%, 97%, 0.14), 
-  
+  transform: scale(1.075);
+  box-shadow: 0px 5px 30px 3px hsla(0, 0%, 0%, 0.4 );
+
+}
+.textstuff {
+  margin-top: 3em
+
+}
+.small-text {
+  font-size: 10px;
+
+}
+#seizure-button  {
+  margin-top: 3em;
+  background: #1d906e;
+  border: none;
+  border-radius: 1em;
+  padding: 1.1em;
+
+}
+#form {
+  position: relative;
+  margin-top: 100em;
+  width: 100vw;
+  /* Form outline */
+  padding: 1em;
+  padding-bottom: 5em;
+  border: 1px solid #CCC;
+  margin-bottom: -1em;
+
+}
+#form ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+}
+#form ul li {
+  list-style:none;
+
+}
+#form li + li {
+  margin-top: 1em;
+}
+label {
+  /* Uniform size & alignment */
+  display: inline-block;
+  width: 90px;
+  text-align: right;
+}
+input,
+textarea {
+  /* To make sure that all text fields have the same font settings
+     By default, textareas have a monospace font */
+  font: 1em sans-serif;
+
+  /* Uniform text field size */
+  width: 300px;
+  box-sizing: border-box;
+
+  /* Match form field borders */
+  border: 1px solid #999;
+}
+input:focus,
+textarea:focus {
+  /* Additional highlight for focused elements */
+  border-color: #000;
+}
+textarea {
+  /* Align multiline text fields with their labels */
+  vertical-align: top;
+
+  /* Provide space to type some text */
+  height: 5em;
+}
+
+.button {
+  /* Align buttons with the text fields */
+  padding-left: 90px; /* same size as the label elements */
+}
+button {
+  /* This extra margin represent roughly the same space as the space
+     between the labels and their text fields */
+  margin-left: .5em;
 }
