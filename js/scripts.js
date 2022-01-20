@@ -20,6 +20,7 @@ if(x=3) {
 
 }
  */
+window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ","_parent")
 let welcome = "Hello, ";
 let username = 123/*prompt("What is you name?");*/
 if (username == null) {
