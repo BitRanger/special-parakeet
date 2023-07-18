@@ -3,7 +3,6 @@
 #+DESCRIPTION: Gautam's Personal Emacs Config
 #+STARTUP: overview
 #+OPTIONS: toc:2
-
 * TABLE OF CONTENTS :toc:
 - [[#important-programs-to-load-first][IMPORTANT PROGRAMS TO LOAD FIRST]]
   - [[#setup-elpaca-package-manager][Setup Elpaca Package Manager]]
@@ -14,9 +13,11 @@
   - [[#counsel-linux-app][Counsel-Linux-App]]
   - [[#app-launcher-1][App-Launcher]]
 - [[#buffer-move][BUFFER-MOVE]]
+- [[#codespaces][CODESPACES]]
 - [[#company][COMPANY]]
 - [[#dashboard][DASHBOARD]]
 - [[#diminish][DIMINISH]]
+- [[#doom-modeline][DOOM-MODELINE]]
 - [[#flycheck][FLYCHECK]]
 - [[#fonts][FONTS]]
   - [[#setting-the-font-face][Setting The Font Face]]
@@ -27,6 +28,7 @@
   - [[#fix-scrolling-margin][Fix Scrolling Margin]]
 - [[#ivy-counsel][IVY (COUNSEL)]]
 - [[#language-support][LANGUAGE SUPPORT]]
+- [[#lsp-mode][LSP-MODE]]
 - [[#org-mode][ORG MODE]]
   - [[#changing-default-org-directory][Changing Default Org Directory]]
   - [[#enabling-table-of-contents][Enabling Table of Contents]]
@@ -207,7 +209,7 @@
       "t t" '(visual-line-mode :wk "Toggle Truncated Lines")
       "t v" '(vterm-toggle :wk "Toggle Vterm")
       "t e" '(eshell-toggle :wk "Toggle Eshell")
-      "t t" '(treemacs :wk "Toggle Treemacj"))
+      "t t" '(treemacs :wk "Toggle Treemacs"))
 
     (gautam/leader-keys
       "w" '(:ignore t :wk "Windows")
@@ -362,6 +364,11 @@ one, an error is signaled."
       (set-window-buffer other-win buf-this-buf)
       (select-window other-win))))
 #+end_src
+* CODESPACES
+#+begin_src emacs-lisp
+  (use-package codespaces
+    :config (codespaces-setup))
+#+end_src
 * COMPANY
 [[https://company-mode.github.io/][Company]] is a text completion framework for Emacs. The name stands for "complete anything".  Completion will start automatically after you type a few letters. Use M-n and M-p to select, <return> to complete or <tab> to complete the common part.
 #+begin_src emacs-lisp
@@ -402,11 +409,18 @@ Emacs Dashboard is an extensible startup screen showing you recent files, bookma
     :config
     (dashboard-setup-startup-hook)
     (dashboard-modify-heading-icons '((recents . "file-text") (bookmarks . "book"))))
+    (setq dashboard-icon-type 'all-the-icons)
 #+end_src
 * DIMINISH
 This package implements hiding or abbreviation of the modeline displays (lighters) of minor-modes.  With this package installed, you can add ':diminish' to any use-package block to hide that particular mode in the modeline.
 #+begin_src emacs-lisp
   (use-package diminish)
+#+end_src
+* DOOM-MODELINE
+#+begin_src emacs-lisp
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
 #+end_src
 * FLYCHECK
 Install =luacheck= from your Linux distro's repositories for flycheck to work correctly with lua files.  Install =python-pylint= for flycheck to work with python files.  Haskell works with flycheck as long as =haskell-ghc= or =haskell-stack-ghc= is installed.  For more information on language support for flycheck, [[https://www.flycheck.org/en/latest/languages.html][read this]].
@@ -526,6 +540,30 @@ Emacs has built-in programming language modes for Lisp, Scheme, DSSSL, Ada, ASM,
   (use-package lua-mode)
   (use-package rust-mode)
   (use-package gdscript-mode)
+#+end_src
+* LSP-MODE
+#+begin_src emacs-lisp
+  (use-package lsp-mode
+    :init
+    ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+    (setq lsp-keymap-prefix "C-c l")
+    :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+           (XXX-mode . lsp)
+           ;; if you want which-key integration
+           (lsp-mode . lsp-enable-which-key-integration))
+    :commands lsp)
+
+  ;; optionally
+  (use-package lsp-ui :commands lsp-ui-mode)
+  ;; if you are helm user
+  (use-package helm-lsp :commands helm-lsp-workspace-symbol)
+  ;; if you are ivy user
+  (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+  (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+
+  ;; optionally if you want to use debugger
+  (use-package dap-mode)
+  ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 #+end_src
 * ORG MODE
 ** Changing Default Org Directory
@@ -655,10 +693,34 @@ Vterm is a terminal emulator within Emacs.  The 'shell-file-name' setting sets t
 #+end_src
 * THEME
 #+begin_src emacs-lisp
-  (use-package catppuccin-theme
-    :config (load-theme 'catppuccin t)
-    :init (setq catppuccin-flavor 'mocha)
-  )
+  ;;(use-package catppuccin-theme
+  ;;  :config (load-theme 'catppuccin t)
+  ;;  :init (setq catppuccin-flavor 'mocha)
+  ;;)
+  ;;(use-package arc-dark-theme
+  ;;  :elpaca (:host github :repo "cfraz89/arc-dark-theme")
+  ;;  :config 
+  ;;    (load-theme 'arc-dark t)
+  ;;    (setq org-src-fontify-natively nil)
+  ;;    (setq org-block "#FF0000")
+
+  (use-package doom-themes
+    :ensure t
+    :config
+    ;; Global settings (defaults)
+    (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+          doom-themes-enable-italic t) ; if nil, italics is universally disabled
+    (load-theme 'doom-one t)
+
+    ;; Enable flashing mode-line on errors
+    (doom-themes-visual-bell-config)
+    ;; Enable custom neotree theme (all-the-icons must be installed!)
+    (doom-themes-neotree-config)
+    ;; or for treemacs users
+    (setq doom-themes-treemacs-theme "doom-colors") ; use "doom-colors" for less minimal icon theme
+    (doom-themes-treemacs-config)
+    ;; Corrects (and improves) org-mode's native fontification.
+    (doom-themes-org-config))
 #+end_src
 * TREEMACS
 Treemacs is a fully featured file explorer for emacs.
@@ -782,6 +844,7 @@ Treemacs is a fully featured file explorer for emacs.
     :after (treemacs)
     :ensure t
     :config)
+  (add-hook 'treemacs-mode-hook (lambda() (display-line-numbers-mode -1)))
 #+end_src
 * WHICH-KEY
 #+begin_src emacs-lisp
